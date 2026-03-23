@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SAML Response</title>
+</head>
+<body onload="document.forms[0].submit()">
+  <noscript>
+    <p>JavaScriptが無効です。以下のボタンを押して続行してください。</p>
+  </noscript>
+  <%= form_tag saml_acs_url, method: :post do %>
+    <%= hidden_field_tag "SAMLResponse", @saml_response %>
+    <% if @relay_state.present? %>
+      <%= hidden_field_tag "RelayState", @relay_state %>
+    <% end %>
+    <noscript><%= submit_tag "続行" %></noscript>
+  <% end %>
+</body>
+</html>

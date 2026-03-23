@@ -1,0 +1,22 @@
+<h1>Rails SAML IdP</h1>
+
+<% if flash[:notice] %>
+  <p style="color: green;"><%= flash[:notice] %></p>
+<% end %>
+
+<% if @current_user %>
+  <p>ログイン中: <strong><%= @current_user.email %></strong></p>
+  <%= link_to "ログアウト", logout_session_path, method: :delete, data: { turbo_method: :delete } %>
+<% else %>
+  <p>ログインしていません</p>
+  <%= link_to "ログイン", login_path %>
+<% end %>
+
+<hr>
+
+<h2>SAML IdP エンドポイント</h2>
+<ul>
+  <li><strong>メタデータ:</strong> <%= link_to saml_idp_metadata_url, saml_idp_metadata_url %></li>
+  <li><strong>SSO (AuthnRequest):</strong> <code>GET/POST <%= saml_idp_service_provider_sso_url %></code></li>
+  <li><strong>SLO (LogoutRequest):</strong> <code>GET/POST <%= saml_idp_service_provider_logout_url %></code></li>
+</ul>
