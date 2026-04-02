@@ -6,6 +6,7 @@
 
 <% if @current_user %>
   <p>ログイン中: <strong><%= @current_user.email %></strong></p>
+  <%= link_to "パスワード変更", edit_password_path %> |
   <%= link_to "ログアウト", logout_session_path, method: :delete, data: { turbo_method: :delete } %>
 <% else %>
   <p>ログインしていません</p>

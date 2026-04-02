@@ -21,5 +21,12 @@ Rails.application.routes.draw do
   post   "/login"  => "sessions#create"
   delete "/logout" => "sessions#destroy", as: :logout_session
 
+  # User registration
+  get  "/signup" => "users#new",    as: :signup
+  post "/signup" => "users#create"
+
+  # Password
+  resource :password, only: [:edit, :update]
+
   root "home#index"
 end

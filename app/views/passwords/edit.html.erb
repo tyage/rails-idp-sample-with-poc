@@ -1,0 +1,21 @@
+<h1>パスワード変更</h1>
+
+<% if flash[:alert] %>
+  <p style="color: red;"><%= flash[:alert] %></p>
+<% end %>
+
+<%= form_tag password_path, method: :patch do %>
+  <div>
+    <label for="password">新しいパスワード</label><br>
+    <%= password_field_tag :password, nil, required: true, autofocus: true %>
+  </div>
+
+  <div>
+    <label for="password_confirmation">新しいパスワード（確認）</label><br>
+    <%= password_field_tag :password_confirmation, nil, required: true %>
+  </div>
+
+  <%= submit_tag "パスワードを変更" %>
+<% end %>
+
+<p><%= link_to "戻る", root_path %></p>
